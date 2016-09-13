@@ -44,5 +44,5 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Printf("%+v", resp)
+	fmt.Printf("hahaha%+v", resp)
 }
