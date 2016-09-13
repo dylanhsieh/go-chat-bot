@@ -41,9 +41,13 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	var validID = regexp.MustCompile(`^[a-z]+\[[0-9]+\]$`)
-	var matchResult = validID.MatchString(msg.Text)
-	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means", profile.FirstName, profile.LastName, matchResult))
+	var validChinese = regexp.MustCompile(`^[\u4E00-\u9FA5]+$`)
+	var matchResult = validChinese.MatchString(msg.Text)
+	if matchResult {
+		resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("嗨   , %s %s, 我不懂 %s 是啥意思", profile.FirstName, profile.LastName, msg.Text))
+	} else {
+		resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means", profile.FirstName, profile.LastName, msg.Text))
+	}
 	if err != nil {
 		fmt.Println(err)
 	}
