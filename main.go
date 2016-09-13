@@ -17,7 +17,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"regexp"
+	"unicode"
 )
 
 var mess = &Messenger{}
