@@ -43,7 +43,8 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	var validChinese = regexp.MustCompile(`^[\u4E00-\u9FA5]+$`)
 	var matchResult = validChinese.MatchString(msg.Text)
-	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means", profile.FirstName, profile.LastName, matchResult))
+	var message = fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means", profile.FirstName, profile.LastName, matchResult)
+	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
 		fmt.Println(err)
 	}
