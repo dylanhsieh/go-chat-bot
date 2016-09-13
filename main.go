@@ -41,6 +41,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
+	var validID = regexp.MustCompile(`^[a-z]+\[[0-9]+\]$`)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means", profile.FirstName, profile.LastName, msg.Text))
 	if err != nil {
 		fmt.Println(err)
