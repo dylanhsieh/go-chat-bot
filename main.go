@@ -41,7 +41,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	var validID = regexp.MustCompile("^[\u4e00-\u9fa5]$")
+	var validID = regexp.MustCompile("^[\u4e00-\u9fa5]+$")
 	var matchResult = validID.MatchString(msg.Text)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means %s", profile.FirstName, profile.LastName, msg.Text, matchResult))
 	if err != nil {
