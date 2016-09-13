@@ -53,8 +53,8 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	if validLaugh {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, '笑屁')
+	if matchLaughResult {
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "笑屁")
 		if err != nil {
 			fmt.Println(err)
 		}
