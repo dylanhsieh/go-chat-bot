@@ -41,11 +41,24 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	var validID = regexp.MustCompile("^[\u4e00-\u9fa5]+$")
-	var matchResult = validID.MatchString(msg.Text)
+	//var validID = regexp.MustCompile("^[\u4e00-\u9fa5]+$")
+	//var matchResult = validID.MatchString(msg.Text)
+	var matchResult = IsChineseChar(msg.Text)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, fmt.Sprintf("Hello   , %s %s, I don't understand what does %s means %s", profile.FirstName, profile.LastName, msg.Text, matchResult))
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Printf("%+v", resp)
+}
+
+/*
+判断字符串是否包含中文字符
+*/
+func IsChineseChar(str string) bool {
+	for _, r := range str {
+		if unicode.Is(unicode.Scripts["Han"], r) {
+			return true
+		}
+	}
+	return false
 }
