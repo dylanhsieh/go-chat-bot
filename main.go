@@ -45,17 +45,9 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		regExpr string
 		reponse string
 	}
-	validMessage := []string{
-		"(哈|呵|嘿)",
-		"(嗨|你好|妳好|您好)",
-	}
-	messageResponse := []string{
-		"笑屁",
-		"嗨",
-	}
 	validMessages := []structValidMessage{
-		{regExpr: "Alice", reponse: "dd"},
-		{regExpr: "Alice", reponse: "dd"},
+		{regExpr: "(哈|呵|嘿)", reponse: "笑屁"},
+		{regExpr: "(嗨|你好|妳好|您好)", reponse: "嗨"},
 	}
 
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
@@ -63,10 +55,10 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	for index, each := range validMessage {
-		valid := regexp.MustCompile(each)
+	for index, each := range validMessages {
+		valid := regexp.MustCompile(each.regExpr)
 		if valid.MatchString(msg.Text) {
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, messageResponse[index])
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, valid.reponse)
 			fmt.Println(validMessages[index].regExpr)
 			if err != nil {
 				fmt.Println(err)
