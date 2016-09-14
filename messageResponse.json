@@ -1,10 +1,18 @@
 [
   {
-    "regExpr": "(哈|呵|嘿)",
-    "reponse": "笑屁"
+    "title": "About Us",
+    "url": "/about-us"
   },
   {
-    "regExpr": "(嗨|你好|妳好|您好|哈囉)",
-    "reponse": "嗨"
+    "title": "Team",
+    "url": "/team"
+  },
+  {
+    "title": "Projects",
+    "url": "/projects"
+  },
+  {
+    "title": "Hire Us",
+    "url": "/hire-us"
   }
 ]
