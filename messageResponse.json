@@ -1,10 +1,10 @@
 [
   {
-    "regExpr": "Projects",
-    "response": "/projects"
+    "regExpr": "(哈|呵|嘿)",
+    "response": "笑屁"
   },
   {
-    "regExpr": "Hire Us",
-    "response": "/hire-us"
+    "regExpr": "(嗨|你好|妳好|您好|哈囉)",
+    "response": "嗨"
   }
 ]
