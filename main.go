@@ -36,14 +36,8 @@ func main() {
 }
 
 type Page struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
-	Url   string `json:"url"`
-}
-
-type structValidMessage struct {
-	regExpr string
-	reponse string
+	regExpr string `json:"regExpr"`
+	reponse string `json:"reponse"`
 }
 
 //MessageReceived :Callback to handle when message received.
@@ -54,10 +48,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	validMessages := []structValidMessage{
-		{regExpr: "(哈|呵|嘿)", reponse: "笑屁"},
-		{regExpr: "(嗨|你好|妳好|您好|哈囉)", reponse: "嗨"},
-	}
 
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
@@ -66,14 +56,13 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	pages := getPages()
 	fmt.Printf("%v", pages[0])
-	for _, each := range validMessages {
+	for _, each := range pages {
 		valid := regexp.MustCompile(each.regExpr)
 		if valid.MatchString(msg.Text) {
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.reponse)
 			if err != nil {
 				fmt.Println(err)
 			}
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].Title)
 			if err != nil {
 				fmt.Println(err)
 			}
