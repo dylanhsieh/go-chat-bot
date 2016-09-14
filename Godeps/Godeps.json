@@ -1,9 +1,6 @@
 {
-       "ImportPath": "github.com/kkdai/FBBotTemplate",
-       "GoVersion": "go1.6",
-       "GodepVersion": "v74",
-       "Packages": [
-               "./..."
-       ],
-       "Deps": []
+	"ImportPath": ".",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v74",
+	"Deps": []
 }
