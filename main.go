@@ -57,6 +57,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		{regExpr: "Alice", reponse: "dd"},
 		{regExpr: "Alice", reponse: "dd"},
 	}
+
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
@@ -66,6 +67,10 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		valid := regexp.MustCompile(each)
 		if valid.MatchString(msg.Text) {
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, messageResponse[index])
+			fmt.Println(validMessages[index].regExpr)
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
 	}
 	fmt.Printf("%+v", resp)
