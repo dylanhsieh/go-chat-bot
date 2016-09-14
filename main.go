@@ -58,7 +58,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	for index, each := range validMessages {
 		valid := regexp.MustCompile(each.regExpr)
 		if valid.MatchString(msg.Text) {
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, valid.reponse)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.reponse)
 			fmt.Println(validMessages[index].regExpr)
 			if err != nil {
 				fmt.Println(err)
