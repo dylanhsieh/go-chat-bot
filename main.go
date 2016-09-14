@@ -13,14 +13,10 @@
 package main
 
 import (
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"regexp"
@@ -29,38 +25,6 @@ import (
 var mess = &Messenger{}
 
 func main() {
-	// mongo
-	const (
-		Host       = "ds011725.mlab.com:11725"
-		Username   = "dylan_hsieh"
-		Password   = "2juxuuux"
-		Database   = "message"
-		Collection = "messageResponse"
-	)
-	session, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:    []string{Host},
-		Username: Username,
-		Password: Password,
-		Database: Database,
-		DialServer: func(addr *mgo.ServerAddr) (net.Conn, error) {
-			return tls.Dial("tcp", addr.String(), &tls.Config{})
-		},
-	})
-	if err != nil {
-		panic(err)
-	}
-	defer session.Close()
-
-	coll := session.DB(Database).C(Collection)
-
-	// Find the number of games won by Dave
-	gamesWon, err := coll.Find(bson.M{"response": "超可愛"}).Count()
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("%d games.\n", gamesWon)
-	//
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
 	mess.VerifyToken = os.Getenv("TOKEN")
