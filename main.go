@@ -40,11 +40,6 @@ type Page struct {
 	Response string `json:"reponse"`
 }
 
-type structValidMessage struct {
-	regExpr string
-	reponse string
-}
-
 //MessageReceived :Callback to handle when message received.
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
@@ -60,7 +55,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 	}
 	pages := getPages()
-	for _, each := range pages {
+	for _, each := range pages[0] {
 		valid := regexp.MustCompile(each.RegExpr)
 		if valid.MatchString(msg.Text) {
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.Response)
