@@ -1,5 +1,9 @@
 [
   {
+    "regExpr": "(來福|旺財)",
+    "response": "超可愛"
+  },
+  {
     "regExpr": "(筱雯|政孝|Reha|Dylan|reha|dylan)",
     "response": "管理員說你好"
   },
