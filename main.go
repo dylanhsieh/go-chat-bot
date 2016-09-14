@@ -35,6 +35,26 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
+type Page struct {
+	ID    int    `json:"id"`
+	Title string `json:"title"`
+	Url   string `json:"url"`
+}
+
+func (p Page) toString() string {
+	return toJson(p)
+}
+
+func toJson(p interface{}) string {
+	bytes, err := json.Marshal(p)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+
+	return string(bytes)
+}
+
 //MessageReceived :Callback to handle when message received.
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
