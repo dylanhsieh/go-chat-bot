@@ -41,6 +41,10 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
+	type validMessage struct {
+		regExpr string
+		reponse string
+	}
 	validMessage := []string{
 		"(哈|呵|嘿)",
 		"(嗨|你好|妳好|您好)",
