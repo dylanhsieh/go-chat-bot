@@ -59,7 +59,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.RegExpr)
 		valid := regexp.MustCompile(each.RegExpr)
 		if valid.MatchString(msg.Text) {
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.Response)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, 'hit')
 			if err != nil {
 				fmt.Println(err)
 			}
