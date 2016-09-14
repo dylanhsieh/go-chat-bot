@@ -65,9 +65,11 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	for index, each := range validMessage {
 		message = fmt.Sprintf(" [%d] %s : ", index, each)
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, message)
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, regexp.MustCompile)
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, messageResponse[index])
+		valid := regexp.MustCompile(each)
+		if valid.MatchString(msg.Text) {
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, message)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, messageResponse[index])
+		}
 	}
 	if matchLaughResult {
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "笑屁")
