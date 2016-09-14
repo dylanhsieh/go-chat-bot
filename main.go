@@ -36,8 +36,8 @@ func main() {
 }
 
 type Page struct {
-	Title string `json:"title"`
-	Url   string `json:"url"`
+	regExpr string `json:"title"`
+	Url     string `json:"url"`
 }
 
 type structValidMessage struct {
@@ -64,7 +64,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 	}
 	pages := getPages()
-	fmt.Printf("%v", pages[0])
 	for _, each := range validMessages {
 		valid := regexp.MustCompile(each.regExpr)
 		if valid.MatchString(msg.Text) {
@@ -72,7 +71,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 			if err != nil {
 				fmt.Println(err)
 			}
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].Title)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].regExpr)
 			if err != nil {
 				fmt.Println(err)
 			}
