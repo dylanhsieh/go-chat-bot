@@ -13,14 +13,10 @@
 package main
 
 import (
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"regexp"
