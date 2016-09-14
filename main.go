@@ -88,9 +88,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		}
 	}
 	pages := getPages()
-	for _, p := range pages {
-		fmt.Println(p.toString())
-	}
+	fmt.Printf("%s", pages[0])
 
 	fmt.Println(toJson(pages))
 	fmt.Printf("%+v", resp)
