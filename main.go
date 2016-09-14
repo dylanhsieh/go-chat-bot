@@ -55,6 +55,11 @@ func toJson(p interface{}) string {
 	return string(bytes)
 }
 
+type structValidMessage struct {
+	regExpr string
+	reponse string
+}
+
 //MessageReceived :Callback to handle when message received.
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
@@ -62,10 +67,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 		return
-	}
-	type structValidMessage struct {
-		regExpr string
-		reponse string
 	}
 	validMessages := []structValidMessage{
 		{regExpr: "(哈|呵|嘿)", reponse: "笑屁"},
@@ -88,7 +89,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	pages := getPages()
 	for _, p := range pages {
-		fmt.Println(p.toString())
+		fmt.Println(p.title)
 	}
 
 	fmt.Println(toJson(pages))
