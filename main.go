@@ -41,7 +41,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	type validMessage struct {
+	type structValidMessage struct {
 		regExpr string
 		reponse string
 	}
