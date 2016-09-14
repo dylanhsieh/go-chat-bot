@@ -54,8 +54,8 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		"嗨",
 	}
 	validMessages := []structValidMessage{
-		{regExpr: "Alice", reponse: 'dd'},
-		{regExpr: "Alice", reponse: 'dd'},
+		{regExpr: "Alice", reponse: "dd"},
+		{regExpr: "Alice", reponse: "dd"},
 	}
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
