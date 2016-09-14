@@ -67,7 +67,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		}
 	}
 
-	if count <= 0 {
+	if matchCount <= 0 {
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼")
 	}
 
