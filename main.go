@@ -73,7 +73,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 			if err != nil {
 				fmt.Println(err)
 			}
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].title)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].Title)
 			if err != nil {
 				fmt.Println(err)
 			}
