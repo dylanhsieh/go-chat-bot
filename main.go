@@ -68,7 +68,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	if matchCount <= 0 {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼")
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼, 說中文好嗎")
 	}
 
 	fmt.Printf("%+v", resp)
