@@ -36,7 +36,7 @@ func main() {
 }
 
 type Page struct {
-	regExpr string `json:"title"`
+	RegExpr string `json:"title"`
 	Url     string `json:"url"`
 }
 
@@ -71,7 +71,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 			if err != nil {
 				fmt.Println(err)
 			}
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].regExpr)
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, pages[0].RegExpr)
 			if err != nil {
 				fmt.Println(err)
 			}
