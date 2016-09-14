@@ -37,7 +37,7 @@ func main() {
 
 type Page struct {
 	RegExpr  string `json:"regExpr"`
-	Response string `json:"reponse"`
+	Response string `json:"response"`
 }
 
 //MessageReceived :Callback to handle when message received.
@@ -59,7 +59,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.RegExpr)
 		valid := regexp.MustCompile(each.RegExpr)
 		if valid.MatchString(msg.Text) {
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, "hit")
+			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.Response)
 			if err != nil {
 				fmt.Println(err)
 			}
