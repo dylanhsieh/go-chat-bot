@@ -49,7 +49,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		return
 	}
 
-	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
+	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
 		fmt.Println(err)
