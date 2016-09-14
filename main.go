@@ -55,12 +55,12 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 	}
 	pages := getPages()
-	matchCount := 0;
+	matchCount := 0
 	for _, each := range pages {
 		valid := regexp.MustCompile(each.RegExpr)
 		if valid.MatchString(msg.Text) {
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.Response)
-			matchCount++;
+			matchCount++
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -68,7 +68,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	if count <= 0 {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, '我不懂您在說什麼')
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼")
 	}
 
 	fmt.Printf("%+v", resp)
