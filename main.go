@@ -47,7 +47,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	validMessages := []structValidMessage{
 		{regExpr: "(哈|呵|嘿)", reponse: "笑屁"},
-		{regExpr: "(嗨|你好|妳好|您好)", reponse: "嗨"},
+		{regExpr: "(嗨|你好|妳好|您好|哈囉)", reponse: "嗨"},
 	}
 
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
