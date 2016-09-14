@@ -42,7 +42,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	var validLaugh = regexp.MustCompile("^[\u4e00-\u9fa5]+$")
+	var validLaugh = regexp.MustCompile("(哈|呵|嘿)")
 	var matchLaughResult = validLaugh.MatchString(msg.Text)
 	var matchResult = IsChineseChar(msg.Text)
 	var message = fmt.Sprintf("Hello   , %s %s", profile.FirstName, profile.LastName)
