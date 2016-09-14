@@ -44,12 +44,14 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	var validLaugh = regexp.MustCompile("(哈|呵|嘿)")
 	//var validGreeting = regexp.MustCompile("(嗨|你好|妳好|您好)")
-	var validMessage []string
-	var messageResponse []string
-	validMessage[0] = "(哈|呵|嘿)"
-	validMessage[1] = "(嗨|你好|妳好|您好)"
-	messageResponse[0] = "笑屁"
-	messageResponse[1] = "嗨"
+	validMessage := []string{
+		"(哈|呵|嘿)",
+		"(嗨|你好|妳好|您好)",
+	}
+	messageResponse := []string{
+		"笑屁",
+		"嗨",
+	}
 	var matchLaughResult = validLaugh.MatchString(msg.Text)
 	//var matchResult = IsChineseChar(msg.Text)
 	//var message = fmt.Sprintf("Hello   , %s %s", profile.FirstName, profile.LastName)
@@ -61,8 +63,9 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	for value := range validMessage {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, value)
+	for index, each := range validMessage {
+		message = fmt.Sprintf(" [%d] %s : ", index, each)
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, message)
 	}
 	if matchLaughResult {
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "笑屁")
