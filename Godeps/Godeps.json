@@ -7,7 +7,7 @@
        ],
        "Deps": [
         {
-            "ImportPath": "gopkg.in/mgo.v2",
+            "ImportPath": "github.com/gopkg.in/mgo.v2",
             "Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
         }
        ]
