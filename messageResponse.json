@@ -1,5 +1,9 @@
 [
   {
+    "regExpr": "(筱雯|政孝|Reha|Dylan|reha|dylan)",
+    "response": "管理員說你好"
+  },
+  {
     "regExpr": "(幹|賤|低能|機掰|蠢|笨|屁|屎)",
     "response": "有禮貌點喔"
   },
