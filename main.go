@@ -42,8 +42,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
-	var validLaugh = regexp.MustCompile("(哈|呵|嘿)")
-	//var validGreeting = regexp.MustCompile("(嗨|你好|妳好|您好)")
 	validMessage := []string{
 		"(哈|呵|嘿)",
 		"(嗨|你好|妳好|您好)",
@@ -52,42 +50,16 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		"笑屁",
 		"嗨",
 	}
-	var matchLaughResult = validLaugh.MatchString(msg.Text)
-	//var matchResult = IsChineseChar(msg.Text)
-	//var message = fmt.Sprintf("Hello   , %s %s", profile.FirstName, profile.LastName)
-	//if matchResult {
-	//message = fmt.Sprintf("嗨   , %s %s", profile.FirstName, profile.LastName)
-	//}
 	var message = fmt.Sprintf(" %s %s : ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
 		fmt.Println(err)
 	}
 	for index, each := range validMessage {
-		message = fmt.Sprintf(" [%d] %s : ", index, each)
 		valid := regexp.MustCompile(each)
 		if valid.MatchString(msg.Text) {
-			resp, err = mess.SendSimpleMessage(opts.Sender.ID, message)
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, messageResponse[index])
 		}
 	}
-	if matchLaughResult {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "笑屁")
-		if err != nil {
-			fmt.Println(err)
-		}
-	}
 	fmt.Printf("%+v", resp)
-}
-
-/*
-判断字符串是否包含中文字符
-*/
-func IsChineseChar(str string) bool {
-	for _, r := range str {
-		if unicode.Is(unicode.Scripts["Han"], r) {
-			return true
-		}
-	}
-	return false
 }
