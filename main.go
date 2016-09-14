@@ -62,7 +62,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 	}
 	for key, value := range validMessage {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, key)
 		resp, err = mess.SendSimpleMessage(opts.Sender.ID, value)
 	}
 	if matchLaughResult {
