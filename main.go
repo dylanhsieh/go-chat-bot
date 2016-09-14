@@ -41,20 +41,6 @@ type Page struct {
 	Url   string `json:"url"`
 }
 
-func (p Page) toString() string {
-	return toJson(p)
-}
-
-func toJson(p interface{}) string {
-	bytes, err := json.Marshal(p)
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-
-	return string(bytes)
-}
-
 type structValidMessage struct {
 	regExpr string
 	reponse string
