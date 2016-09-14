@@ -36,8 +36,8 @@ func main() {
 }
 
 type Page struct {
-	RegExpr string `json:"title"`
-	Url     string `json:"url"`
+	RegExpr  string `json:"regExpr"`
+	Response string `json:"reponse"`
 }
 
 type structValidMessage struct {

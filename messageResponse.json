@@ -1,18 +1,10 @@
 [
   {
-    "title": "About Us",
-    "url": "/about-us"
+    "regExpr": "Projects",
+    "response": "/projects"
   },
   {
-    "title": "Team",
-    "url": "/team"
-  },
-  {
-    "title": "Projects",
-    "url": "/projects"
-  },
-  {
-    "title": "Hire Us",
-    "url": "/hire-us"
+    "regExpr": "Hire Us",
+    "response": "/hire-us"
   }
 ]
