@@ -23,6 +23,13 @@ import (
 	"regexp"
 )
 
+const (
+	Host     = "ds011725.mlab.com:11725"
+	Username = "dylan_hsieh"
+	Password = "2juxuuux"
+	Database = "message"
+)
+
 var mess = &Messenger{}
 
 func main() {
@@ -70,7 +77,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	if matchCount <= 0 {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼, 說中文好嗎")
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "我不懂您在說什麼")
 	}
 
 	fmt.Printf("%+v", resp)
@@ -89,12 +96,6 @@ func getPages() []Page {
 }
 
 func connectMongo() {
-	const (
-		Host     = "ds011725.mlab.com:11725"
-		Username = "dylan_hsieh"
-		Password = "2juxuuux"
-		Database = "message"
-	)
 
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{})
 	if err == nil {
