@@ -15,7 +15,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	//"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -26,6 +26,24 @@ import (
 var mess = &Messenger{}
 
 func main() {
+	const (
+		Host     = "iad-mongos0.objectrocket.com:12345"
+		Username = "example"
+		Password = "example"
+		Database = "test"
+	)
+
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{
+		Addrs:    []string{Host},
+		Username: Username,
+		Password: Password,
+		Database: Database,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Connected to %v!\n", session.LiveServers())
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
 	mess.VerifyToken = os.Getenv("TOKEN")
