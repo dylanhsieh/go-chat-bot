@@ -34,6 +34,10 @@ var mess = &Messenger{}
 
 func main() {
 
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{})
+	if err == nil {
+		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
+	}
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
 	mess.VerifyToken = os.Getenv("TOKEN")
@@ -96,10 +100,5 @@ func getPages() []Page {
 }
 
 func connectMongo() {
-
-	session, err := mgo.DialWithInfo(&mgo.DialInfo{})
-	if err == nil {
-		fmt.Printf("Connected to %v!\n", session.LiveServers())
-	}
 
 }
