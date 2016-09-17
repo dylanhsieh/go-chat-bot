@@ -40,10 +40,10 @@ func main() {
 		Database: Database,
 	})
 	if err != nil {
-		panic(err)
+	} else {
+		fmt.Printf("Connected to %v!\n", session.LiveServers())
 	}
 
-	fmt.Printf("Connected to %v!\n", session.LiveServers())
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
 	mess.VerifyToken = os.Getenv("TOKEN")
