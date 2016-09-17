@@ -39,8 +39,7 @@ func main() {
 		Password: Password,
 		Database: Database,
 	})
-	if err != nil {
-	} else {
+	if err == nil {
 		fmt.Printf("Connected to %v!\n", session.LiveServers())
 	}
 
