@@ -15,7 +15,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	//"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -26,23 +26,23 @@ import (
 var mess = &Messenger{}
 
 func main() {
-	//const (
-	//Host     = "ds011725.mlab.com:11725"
-	//Username = "dylan_hsieh"
-	//Password = "2juxuuux"
-	//Database = "message"
-	//)
+	const (
+		Host     = "ds011725.mlab.com:11725"
+		Username = "dylan_hsieh"
+		Password = "2juxuuux"
+		Database = "message"
+	)
 
-	//session, err := mgo.DialWithInfo(&mgo.DialInfo{
-	//Addrs:    []string{Host},
-	//Username: Username,
-	//Password: Password,
-	//Database: Database,
-	//})
-	//if err != nil {
-	//} else {
-	//fmt.Printf("Connected to %v!\n", session.LiveServers())
-	//}
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{
+		Addrs:    []string{Host},
+		Username: Username,
+		Password: Password,
+		Database: Database,
+	})
+	if err != nil {
+	} else {
+		fmt.Printf("Connected to %v!\n", session.LiveServers())
+	}
 
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
