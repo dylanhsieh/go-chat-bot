@@ -17,7 +17,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
+	//"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
 	"net"
@@ -52,16 +52,16 @@ func main() {
 	if err == nil {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 	}
-	defer session.Close()
+	//defer session.Close()
 
-	coll := session.DB(Database).C(Collection)
-	player := "超可愛"
-	gamesWon, err := coll.Find(bson.M{"response": player}).Count()
-	if err != nil {
-		panic(err)
-	}
+	//coll := session.DB(Database).C(Collection)
+	//player := "超可愛"
+	//gamesWon, err := coll.Find(bson.M{"response": player}).Count()
+	//if err != nil {
+	//panic(err)
+	//}
 
-	fmt.Printf("%s has won %d games.\n", player, gamesWon)
+	//fmt.Printf("%s has won %d games.\n", player, gamesWon)
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
 	mess.VerifyToken = os.Getenv("TOKEN")
