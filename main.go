@@ -23,19 +23,18 @@ import (
 	"regexp"
 )
 
-const (
-	Host     = "ds011725.mlab.com:11725"
-	Username = "dylan_hsieh"
-	Password = "2juxuuux"
-	Database = "message"
-)
-
 var mess = &Messenger{}
 
 func main() {
 
+	const (
+		Host     = "ds011725.mlab.com:11725"
+		Username = "dylan_hsieh"
+		Password = "2juxuuux"
+		Database = "message"
+	)
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:    Host,
+		Addrs:    []string{Host},
 		Username: Username,
 		Password: Password,
 		Database: Database,
