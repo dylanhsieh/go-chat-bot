@@ -1,7 +1,10 @@
 {
-	"ImportPath": "heroku/user/morning-bastion-72000",
-	"GoVersion": "go1.6",
-	"GodepVersion": "v74",
-	"Deps": [
-	]
+       "ImportPath": "github.com/kkdai/FBBotTemplate",
+       "GoVersion": "go1.6",
+       "GodepVersion": "v74",
+       "Packages": [
+               "./..."
+       ],
+       "Deps": [
+       ]
 }
