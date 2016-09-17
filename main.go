@@ -27,10 +27,10 @@ var mess = &Messenger{}
 
 func main() {
 	const (
-		Host     = "iad-mongos0.objectrocket.com:12345"
-		Username = "example"
-		Password = "example"
-		Database = "test"
+		Host     = "ds011725.mlab.com:11725"
+		Username = "dylan_hsieh"
+		Password = "2juxuuux"
+		Database = "message"
 	)
 
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
