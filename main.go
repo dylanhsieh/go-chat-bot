@@ -34,7 +34,12 @@ var mess = &Messenger{}
 
 func main() {
 
-	session, err := mgo.DialWithInfo(&mgo.DialInfo{})
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{
+		Addrs:    Host,
+		Username: Username,
+		Password: Password,
+		Database: Database,
+	})
 	if err == nil {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 	}
