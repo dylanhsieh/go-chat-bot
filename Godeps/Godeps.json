@@ -6,5 +6,9 @@
                "./..."
        ],
        "Deps": [
+        {
+            "ImportPath": "github.com/go-mgo/mgo/tree/v2",
+            "Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+        }
        ]
 }
