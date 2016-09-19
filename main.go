@@ -65,11 +65,17 @@ func main() {
 			log.Println("Bot start in token:", mess.VerifyToken)
 			mess.MessageReceived = MessageReceived
 			http.HandleFunc("/webhook", mess.Handler)
+			http.HandleFunc("/hello", HelloServer)
 			log.Fatal(http.ListenAndServe(":"+port, nil))
 		} else {
 			log.Println("read fail", err)
 		}
 	}
+}
+
+// hello world, the web server
+func HelloServer(w http.ResponseWriter, req *http.Request) {
+	io.WriteString(w, "hello, world!\n")
 }
 
 //MessageReceived :Callback to handle when message received.
