@@ -76,7 +76,23 @@ func main() {
 
 // hello world, the web server
 func HelloServer(w http.ResponseWriter, req *http.Request) {
-	io.WriteString(w, "hello, world!\n")
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{
+		Addrs:    []string{Host},
+		Username: Username,
+		Password: Password,
+		Database: Database,
+	})
+
+	if err == nil {
+		defer session.Close()
+		coll := session.DB(Database).C(Collection)
+		var result []MessageValidResponse
+		err := coll.Find(bson.M{}).All(&result)
+		if err == nil {
+			results = result
+		}
+	}
+	io.WriteString(w, "hello, world!\n", results)
 }
 
 //MessageReceived :Callback to handle when message received.
