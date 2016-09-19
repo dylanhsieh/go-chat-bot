@@ -26,7 +26,7 @@ import (
 
 var mess = &Messenger{}
 
-type Person struct {
+type MessageResponse struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
 	RegExpr  string        `bson:"regExpr"`
 	Response string        `bson:"response"`
@@ -51,7 +51,7 @@ func main() {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
-		var result []Person
+		var result []MessageResponse
 		//err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
 		err := coll.Find(bson.M{}).All(&result)
 
