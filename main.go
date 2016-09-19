@@ -39,7 +39,6 @@ const (
 )
 
 var results []MessageValidResponse
-var collectionConnection = nil
 
 func main() {
 
@@ -53,10 +52,9 @@ func main() {
 		fmt.Printf("Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
-		collectionConnection = coll
-		fmt.Println("Mongo Message: ", collectionConnection)
 		var result []MessageValidResponse
-		err := coll.Find(bson.M{}).All(&result)
+		err := coll.Fin
+		d(bson.M{}).All(&result)
 		results = result
 
 		if err == nil {
@@ -83,6 +81,17 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
+
+	session, err := getSession()
+	if err != nil {
+		return nil, err
+	}
+	defer session.Close()
+	coll := session.DB(Database).C(Collection)
+	var result []MessageValidResponse
+	err := coll.Fin
+	d(bson.M{}).All(&result)
+	results = result
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
