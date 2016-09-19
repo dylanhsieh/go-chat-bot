@@ -25,7 +25,7 @@ import (
 )
 
 var mess = &Messenger{}
-var coil = nil
+var coil
 
 func main() {
 
