@@ -92,7 +92,9 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
 		err := coll.Find(bson.M{}).All(&result)
-		results = result
+		if err == nil {
+			results = result
+		}
 	}
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
