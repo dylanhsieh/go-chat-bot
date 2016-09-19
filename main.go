@@ -47,7 +47,9 @@ func main() {
 		coll := session.DB(Database).C(Collection)
 		gamesWon, err := coll.Find(bson.M{"response": "超可愛"}).Count()
 
-		log.Println("mongo message", gamesWon)
+		if err == nil {
+			log.Println("mongo message", gamesWon)
+		}
 	}
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
