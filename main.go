@@ -16,6 +16,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -41,6 +42,8 @@ func main() {
 	})
 	if err == nil {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
+		defer session.Close()
+		coll := session.DB(Database).C(Collection)
 	}
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
