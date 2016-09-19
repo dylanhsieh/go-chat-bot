@@ -30,17 +30,18 @@ type MessageValidResponse struct {
 	Response string        `bson:"response"`
 }
 
+const (
+	Host       = "ds011725.mlab.com:11725"
+	Username   = "dylan_hsieh"
+	Password   = "2juxuuux"
+	Database   = "message"
+	Collection = "messageResponse"
+)
+
 var results []MessageValidResponse
 
 func main() {
 
-	const (
-		Host       = "ds011725.mlab.com:11725"
-		Username   = "dylan_hsieh"
-		Password   = "2juxuuux"
-		Database   = "message"
-		Collection = "messageResponse"
-	)
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:    []string{Host},
 		Username: Username,
