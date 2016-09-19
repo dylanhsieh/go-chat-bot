@@ -55,7 +55,7 @@ func main() {
 		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
-			fmt.Println("mongo message: ", result)
+			fmt.Println("Mongo Message: ", result)
 			port := os.Getenv("PORT")
 			log.Println("Server start in port:", port)
 			mess.VerifyToken = os.Getenv("TOKEN")
