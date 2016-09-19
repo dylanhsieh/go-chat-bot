@@ -27,6 +27,7 @@ import (
 var mess = &Messenger{}
 
 type Person struct {
+	ID       bson.ObjectId `bson:"_id,omitempty"`
 	regExpr  string
 	response string
 }
