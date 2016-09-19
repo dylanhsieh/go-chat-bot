@@ -23,7 +23,6 @@ import (
 )
 
 var mess = &Messenger{}
-var col *mgo.Collection
 
 type MessageValidResponse struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
@@ -51,7 +50,7 @@ func main() {
 	if err == nil {
 		fmt.Printf("Connected to %v!\n", session.LiveServers())
 		defer session.Close()
-		coll = session.DB(Database).C(Collection)
+		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
 		err := coll.Find(bson.M{}).All(&result)
 		results = result
