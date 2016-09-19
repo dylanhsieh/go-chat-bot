@@ -95,7 +95,6 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		fmt.Println(err)
 		return
 	}
-	var abc int
 	results = result
 	switch req.Method {
 	case "GET":
