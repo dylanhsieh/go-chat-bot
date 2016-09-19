@@ -113,6 +113,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 				Response: response,
 			}
 			if err := coll.Insert(messageUpdate); err != nil {
+				message = ""
 				io.WriteString(w, fmt.Sprintf("%s", err))
 			}
 		}
