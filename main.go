@@ -23,7 +23,7 @@ import (
 )
 
 var mess = &Messenger{}
-var coil Collection
+var coll Collection
 
 type MessageValidResponse struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
