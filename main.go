@@ -21,7 +21,6 @@ import (
 	"net/http"
 	"os"
 	"regexp"
-	"strings"
 )
 
 var mess = &Messenger{}
@@ -89,8 +88,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 	}
 	defer session.Close()
 	coll := session.DB(Database).C(Collection)
-	var message string
-	message = ""
+	var message = ""
 	switch req.Method {
 	case "GET":
 		var result []MessageValidResponse
