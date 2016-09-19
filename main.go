@@ -21,6 +21,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"string"
 )
 
 var mess = &Messenger{}
@@ -98,7 +99,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 		for _, each := range result {
-			message = fmt.Sprintf("[regExpr]:%s[response]:%s ", each.RegExpr, each.Response)
+			message += fmt.Sprintf("[regExpr]:%s\n[response]:%s\n\n", each.RegExpr, each.Response)
 		}
 	case "POST":
 		// Create a new record.
