@@ -52,7 +52,7 @@ func main() {
 		defer session.Close()
 		result := MessageResponse{}
 		coll := session.DB(Database).C(Collection)
-		err = c.Find(bson.M{"response": "超可愛"}).Select(bson.M{"response": "超可愛"}).One(&result)
+		err = coil.Find(bson.M{"response": "超可愛"}).Select(bson.M{"response": "超可愛"}).One(&result)
 		if err != nil {
 			panic(err)
 		}
