@@ -35,10 +35,11 @@ type MessageResponse struct {
 func main() {
 
 	const (
-		Host     = "ds011725.mlab.com:11725"
-		Username = "dylan_hsieh"
-		Password = "2juxuuux"
-		Database = "message"
+		Host       = "ds011725.mlab.com:11725"
+		Username   = "dylan_hsieh"
+		Password   = "2juxuuux"
+		Database   = "message"
+		Collection = "messageResponse"
 	)
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:    []string{Host},
