@@ -87,14 +87,13 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		Database: Database,
 	})
 
-	if err != nil {
-		return nil, err
+	if err == nil {
+		defer session.Close()
+		coll := session.DB(Database).C(Collection)
+		var result []MessageValidResponse
+		err := coll.Find(bson.M{}).All(&result)
+		results = result
 	}
-	defer session.Close()
-	coll := session.DB(Database).C(Collection)
-	var result []MessageValidResponse
-	err := coll.Find(bson.M{}).All(&result)
-	results = result
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
