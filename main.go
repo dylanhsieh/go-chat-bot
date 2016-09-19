@@ -53,8 +53,7 @@ func main() {
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
-		err := coll.Fin
-		d(bson.M{}).All(&result)
+		err := coll.Find(bson.M{}).All(&result)
 		results = result
 
 		if err == nil {
@@ -89,8 +88,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	defer session.Close()
 	coll := session.DB(Database).C(Collection)
 	var result []MessageValidResponse
-	err := coll.Fin
-	d(bson.M{}).All(&result)
+	err := coll.Find(bson.M{}).All(&result)
 	results = result
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
