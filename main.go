@@ -28,8 +28,8 @@ var mess = &Messenger{}
 
 type Person struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
-	regExpr  string        `bson:"regExpr,omitempty"`
-	response string        `bson:"response,omitempty"`
+	RegExpr  string        `json:"regExpr" bson:"regExpr"`
+	Response string        `json:"response" bson:"response"`
 }
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
-			fmt.Println("mongo message: ", result[0].regExpr)
+			fmt.Println("mongo message: ", result)
 		} else {
 			log.Println("read fail", err)
 		}
