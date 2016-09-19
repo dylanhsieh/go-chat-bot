@@ -54,7 +54,7 @@ func main() {
 		err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
 
 		if err == nil {
-			log.Println("mongo message", result.regExpr)
+			log.Println("mongo message", result)
 		} else {
 			log.Println("read fail", err)
 		}
