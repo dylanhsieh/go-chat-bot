@@ -50,14 +50,13 @@ func main() {
 	if err == nil {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 		defer session.Close()
-		result := MessageResponse{}
 		coll := session.DB(Database).C(Collection)
-		err = coil.Find(bson.M{"response": "超可愛"}).Select(bson.M{"response": "超可愛"}).One(&result)
-		if err != nil {
-			panic(err)
-		}
+		//err = coil.Find(bson.M{"response": "超可愛"}).Select(bson.M{"response": "超可愛"}).One(&result)
+		//if err != nil {
+		//panic(err)
+		//}
 
-		log.Println("mongo message", result)
+		//log.Println("mongo message", result)
 	}
 	port := os.Getenv("PORT")
 	log.Println("Server start in port:", port)
