@@ -88,17 +88,16 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 	}
 	defer session.Close()
 	coll := session.DB(Database).C(Collection)
-	var result []MessageValidResponse
-	err = coll.Find(bson.M{}).All(&result)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	results = result
 	var message = ""
 	switch req.Method {
 	case "GET":
-		for _, each := range results {
+		var result []MessageValidResponse
+		err = coll.Find(bson.M{}).All(&result)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		for _, each := range result {
 			message = fmt.Sprintf("[regExpr]:%s[response]:%s ", each.RegExpr, each.Response)
 		}
 	case "POST":
