@@ -39,6 +39,7 @@ const (
 )
 
 var results []MessageValidResponse
+var collectionConnection = nil
 
 func main() {
 
@@ -52,6 +53,8 @@ func main() {
 		fmt.Printf("Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
+		collectionConnection = coll
+		fmt.Println("Mongo Message: ", collectionConnection)
 		var result []MessageValidResponse
 		err := coll.Find(bson.M{}).All(&result)
 		results = result
