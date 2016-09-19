@@ -26,6 +26,11 @@ import (
 
 var mess = &Messenger{}
 
+type Person struct {
+	regExpr  string
+	response string
+}
+
 func main() {
 
 	const (
@@ -45,12 +50,13 @@ func main() {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
-		gamesWon := coll.Find(bson.M{"response": "超可愛"})
+		result := Person{}
+		err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
 
-		if gamesWon != nil {
-			log.Println("mongo message", gamesWon)
+		if err == nil {
+			log.Println("mongo message", result.regExpr)
 		} else {
-			log.Println("read fail", gamesWon)
+			log.Println("read fail", err)
 		}
 	}
 	port := os.Getenv("PORT")
