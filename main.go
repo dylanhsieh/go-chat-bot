@@ -59,7 +59,6 @@ func main() {
 
 		if err == nil {
 			fmt.Println("Mongo Message: ", result)
-			fmt.Println("Results: ", results)
 			port := os.Getenv("PORT")
 			log.Println("Server start in port:", port)
 			mess.VerifyToken = os.Getenv("TOKEN")
@@ -89,6 +88,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
+	fmt.Println("Message Results: ", results)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
 		fmt.Println(err)
