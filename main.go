@@ -89,7 +89,8 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 	}
 	defer session.Close()
 	coll := session.DB(Database).C(Collection)
-	var message = ""
+	var message string
+	message = ""
 	switch req.Method {
 	case "GET":
 		var result []MessageValidResponse
