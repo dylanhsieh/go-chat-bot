@@ -73,11 +73,6 @@ func main() {
 	}
 }
 
-type Page struct {
-	RegExpr  string `json:"regExpr"`
-	Response string `json:"response"`
-}
-
 //MessageReceived :Callback to handle when message received.
 func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	// log.Println("event:", event, " opt:", opts, " msg:", msg)
@@ -92,8 +87,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	pages := getPages()
-	fmt.Println("Message Results: ", pages)
 	matchCount := 0
 	for _, each := range results {
 		valid := regexp.MustCompile(each.RegExpr)
@@ -111,18 +104,6 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	fmt.Printf("%+v", resp)
-}
-
-func getPages() []Page {
-	raw, err := ioutil.ReadFile("./messageResponse.json")
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-
-	var c []Page
-	json.Unmarshal(raw, &c)
-	return c
 }
 
 func connectMongo() {
