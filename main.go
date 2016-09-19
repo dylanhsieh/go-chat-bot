@@ -80,8 +80,13 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 		return
 	}
+	session, err := mgo.DialWithInfo(&mgo.DialInfo{
+		Addrs:    []string{Host},
+		Username: Username,
+		Password: Password,
+		Database: Database,
+	})
 
-	session, err := getSession()
 	if err != nil {
 		return nil, err
 	}
