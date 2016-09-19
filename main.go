@@ -49,6 +49,8 @@ func main() {
 
 		if err == nil {
 			log.Println("mongo message", gamesWon)
+		} else {
+			log.Println("read fail")
 		}
 	}
 	port := os.Getenv("PORT")
