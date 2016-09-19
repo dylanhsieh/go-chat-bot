@@ -23,7 +23,7 @@ import (
 )
 
 var mess = &Messenger{}
-var col = nil
+var col *mgo.Collection
 
 type MessageValidResponse struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
