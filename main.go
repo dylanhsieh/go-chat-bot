@@ -48,7 +48,7 @@ func main() {
 		Database: Database,
 	})
 	if err == nil {
-		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
+		fmt.Printf("Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
