@@ -21,7 +21,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
-	"string"
+	"strings"
 )
 
 var mess = &Messenger{}
