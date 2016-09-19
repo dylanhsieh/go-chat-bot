@@ -16,7 +16,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/mgo.v2"
-	//"gopkg.in/mgo.v2/bson"
+	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -52,7 +52,7 @@ func main() {
 		coll := session.DB(Database).C(Collection)
 		var result []Person
 		//err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
-		err := coll.Find(nil).All(&result)
+		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
 			log.Println("mongo message", result)
