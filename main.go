@@ -55,19 +55,19 @@ func main() {
 		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
-			fmt.Println("mongo message: ", result[0].RegExpr)
+			fmt.Println("mongo message: ", result)
+			port := os.Getenv("PORT")
+			log.Println("Server start in port:", port)
+			mess.VerifyToken = os.Getenv("TOKEN")
+			mess.AccessToken = os.Getenv("TOKEN")
+			log.Println("Bot start in token:", mess.VerifyToken)
+			mess.MessageReceived = MessageReceived
+			http.HandleFunc("/webhook", mess.Handler)
+			log.Fatal(http.ListenAndServe(":"+port, nil))
 		} else {
 			log.Println("read fail", err)
 		}
 	}
-	port := os.Getenv("PORT")
-	log.Println("Server start in port:", port)
-	mess.VerifyToken = os.Getenv("TOKEN")
-	mess.AccessToken = os.Getenv("TOKEN")
-	log.Println("Bot start in token:", mess.VerifyToken)
-	mess.MessageReceived = MessageReceived
-	http.HandleFunc("/webhook", mess.Handler)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 type Page struct {
