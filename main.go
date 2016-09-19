@@ -107,11 +107,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 		var response = req.FormValue("response")
 		if len(regExpr) > 0 && len(response) > 0 {
 			coll := session.DB(Database).C(Collection)
-			var messageUpdate = MessageValidResponse{
-				RegExpr:  regExpr,
-				Response: response,
-			}
-			if err := coll.Insert(messageUpdate); err != nil {
+			if err := coll.Insert(MessageValidResponse{RegExpr: regExpr, Response: response}); err != nil {
 				io.WriteString(w, fmt.Sprintf("%s", err))
 				break
 			}
