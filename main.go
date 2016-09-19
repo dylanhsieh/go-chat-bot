@@ -32,6 +32,8 @@ type MessageValidResponse struct {
 	Response string        `bson:"response"`
 }
 
+var results []MessageValidResponse
+
 func main() {
 
 	const (
@@ -53,9 +55,11 @@ func main() {
 		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
 		err := coll.Find(bson.M{}).All(&result)
+		results = result
 
 		if err == nil {
 			fmt.Println("Mongo Message: ", result)
+			fmt.Println("Results: ", results)
 			port := os.Getenv("PORT")
 			log.Println("Server start in port:", port)
 			mess.VerifyToken = os.Getenv("TOKEN")
