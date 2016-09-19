@@ -99,7 +99,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case "GET":
 		for _, each := range results {
-			message = fmt.Sprintf("[regExpr]:%s\n[response]:%s \n\n", each.RegExpr, each.Response)
+			message = fmt.Sprintf("[regExpr]:%s[response]:%s ", each.RegExpr, each.Response)
 		}
 	case "POST":
 		// Create a new record.
