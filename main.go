@@ -92,7 +92,10 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 			results = result
 		}
 	}
-	io.WriteString(w, "hello, world!\n", results)
+	for _, each := range results {
+		io.WriteString(w, "hello, world!%s\n", each.RegExpr)
+		io.WriteString(w, "hello, world!%s\n", each.Response)
+	}
 }
 
 //MessageReceived :Callback to handle when message received.
