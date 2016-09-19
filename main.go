@@ -93,7 +93,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 		fmt.Println(err)
 	}
 	pages := getPages()
-	fmt.Println("Message Results: ", page)
+	fmt.Println("Message Results: ", pages)
 	matchCount := 0
 	for _, each := range results {
 		valid := regexp.MustCompile(each.RegExpr)
