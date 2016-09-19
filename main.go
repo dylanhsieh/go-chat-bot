@@ -113,6 +113,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 			}
 			if err := coll.Insert(messageUpdate); err != nil {
 				io.WriteString(w, fmt.Sprintf("%s", err))
+				break
 			}
 			message = fmt.Sprintf("ADD SUCCESS => [regExpr]:%s [response]:%s \n\n", regExpr, response)
 		}
