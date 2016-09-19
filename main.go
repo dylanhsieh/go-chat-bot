@@ -66,7 +66,7 @@ func main() {
 			log.Println("Bot start in token:", mess.VerifyToken)
 			mess.MessageReceived = MessageReceived
 			http.HandleFunc("/webhook", mess.Handler)
-			http.HandleFunc("/hello", HelloServer)
+			http.HandleFunc("/message", messageApiHandler)
 			log.Fatal(http.ListenAndServe(":"+port, nil))
 		} else {
 			log.Println("read fail", err)
@@ -74,8 +74,7 @@ func main() {
 	}
 }
 
-// hello world, the web server
-func HelloServer(w http.ResponseWriter, req *http.Request) {
+func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:    []string{Host},
 		Username: Username,
