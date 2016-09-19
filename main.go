@@ -96,29 +96,30 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	results = result
+	var message = ""
 	switch req.Method {
 	case "GET":
 		for _, each := range results {
-			var message = fmt.Sprintf("[regExpr]:%s\n[response]:%s \n\n", each.RegExpr, each.Response)
-			io.WriteString(w, message)
+			message = fmt.Sprintf("[regExpr]:%s\n[response]:%s \n\n", each.RegExpr, each.Response)
 		}
 	case "POST":
 		// Create a new record.
 		var regExpr = req.FormValue("regexpr")
 		var response = req.FormValue("response")
 		if len(regExpr) > 0 && len(response) > 0 {
-			var message = fmt.Sprintf("[regExpr]:%s\n[response] successfuly added:%s \n\n", regExpr, response)
+			message = fmt.Sprintf("[regExpr]:%s\n[response] successfuly added:%s \n\n", regExpr, response)
 		}
 	case "PUT":
 		// Update an existing record.
-		io.WriteString(w, "PUT")
+		message = "PUT"
 	case "DELETE":
 		// Remove the record.
-		io.WriteString(w, "delete")
+		message = "delete"
 	default:
 		// Give an error message.
-		io.WriteString(w, "error")
+		message = "error"
 	}
+	io.WriteString(w, message)
 }
 
 //MessageReceived :Callback to handle when message received.
