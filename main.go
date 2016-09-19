@@ -28,8 +28,8 @@ var mess = &Messenger{}
 
 type Person struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
-	regExpr  string        `bson:"regExpr"`
-	response string        `bson:"response"`
+	regExpr  string        `bson:"regExpr,omitempty"`
+	response string        `bson:"response,omitempty"`
 }
 
 func main() {
