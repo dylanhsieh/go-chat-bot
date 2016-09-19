@@ -55,7 +55,7 @@ func main() {
 		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
-			log.Println("mongo message", result[0])
+			log.Println("mongo message", result[0].response)
 		} else {
 			log.Println("read fail", err)
 		}
