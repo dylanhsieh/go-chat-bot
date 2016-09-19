@@ -52,11 +52,10 @@ func main() {
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
 		var result []MessageValidResponse
-		//err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
 		err := coll.Find(bson.M{}).All(&result)
 
 		if err == nil {
-			fmt.Println("mongo message: ", result)
+			fmt.Println("mongo message: ", result[0])
 		} else {
 			log.Println("read fail", err)
 		}
