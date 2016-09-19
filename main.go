@@ -83,15 +83,19 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		Database: Database,
 	})
 
-	if err == nil {
-		defer session.Close()
-		coll := session.DB(Database).C(Collection)
-		var result []MessageValidResponse
-		err := coll.Find(bson.M{}).All(&result)
-		if err == nil {
-			results = result
-		}
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
+	defer session.Close()
+	coll := session.DB(Database).C(Collection)
+	var result []MessageValidResponse
+	err := coll.Find(bson.M{}).All(&result)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	results = result
 	switch req.Method {
 	case "GET":
 		for _, each := range results {
