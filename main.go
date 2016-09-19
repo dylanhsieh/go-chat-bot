@@ -100,12 +100,16 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		}
 	case "POST":
 		// Create a new record.
+		io.WriteString(w, "POST")
 	case "PUT":
 		// Update an existing record.
+		io.WriteString(w, "PUT")
 	case "DELETE":
 		// Remove the record.
+		io.WriteString(w, "delete")
 	default:
 		// Give an error message.
+		io.WriteString(w, "error")
 	}
 }
 
