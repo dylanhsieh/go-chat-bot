@@ -45,7 +45,7 @@ func main() {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
-		gamesWon := coll.Find(bson.M{"response": "超可愛"}).Count()
+		gamesWon := coll.Find(bson.M{"response": "超可愛"})
 
 		if gamesWon == nil {
 			log.Println("mongo message", gamesWon)
