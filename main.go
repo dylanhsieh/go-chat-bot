@@ -90,7 +90,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 	defer session.Close()
 	coll := session.DB(Database).C(Collection)
 	var result []MessageValidResponse
-	err := coll.Find(bson.M{}).All(&result)
+	err = coll.Find(bson.M{}).All(&result)
 	if err != nil {
 		fmt.Println(err)
 		return
