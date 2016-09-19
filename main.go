@@ -95,7 +95,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 	pages := getPages()
 	matchCount := 0
-	for _, each := range pages {
+	for _, each := range results {
 		valid := regexp.MustCompile(each.RegExpr)
 		if valid.MatchString(msg.Text) {
 			resp, err = mess.SendSimpleMessage(opts.Sender.ID, each.Response)
