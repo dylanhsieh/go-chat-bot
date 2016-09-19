@@ -47,7 +47,7 @@ func main() {
 		coll := session.DB(Database).C(Collection)
 		gamesWon := coll.Find(bson.M{"response": "超可愛"})
 
-		if gamesWon == nil {
+		if gamesWon != nil {
 			log.Println("mongo message", gamesWon)
 		} else {
 			log.Println("read fail", gamesWon)
