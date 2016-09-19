@@ -88,12 +88,12 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	var message = fmt.Sprintf(" %s %s 您好 ", profile.FirstName, profile.LastName)
-	fmt.Println("Message Results: ", results)
 	resp, err := mess.SendSimpleMessage(opts.Sender.ID, message)
 	if err != nil {
 		fmt.Println(err)
 	}
 	pages := getPages()
+	fmt.Println("Message Results: ", page)
 	matchCount := 0
 	for _, each := range results {
 		valid := regexp.MustCompile(each.RegExpr)
