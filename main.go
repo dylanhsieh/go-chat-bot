@@ -104,7 +104,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		}
 	case "POST":
 		// Create a new record.
-		io.WriteString(w, "POST")
+		io.WriteString(w, req.FormValue("email"))
 	case "PUT":
 		// Update an existing record.
 		io.WriteString(w, "PUT")
