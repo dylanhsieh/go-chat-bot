@@ -93,8 +93,8 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 	for _, each := range results {
-		io.WriteString(w, "hello, world!%s\n", each.RegExpr)
-		io.WriteString(w, "hello, world!%s\n", each.Response)
+		var message = fmt.Sprintf(" %s %s \n", each.RegExpr, each.Response)
+		io.WriteString(w, message)
 	}
 }
 
