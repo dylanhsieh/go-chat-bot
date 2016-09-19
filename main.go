@@ -50,7 +50,7 @@ func main() {
 		if err == nil {
 			log.Println("mongo message", gamesWon)
 		} else {
-			log.Println("read fail")
+			log.Println("read fail", err)
 		}
 	}
 	port := os.Getenv("PORT")
