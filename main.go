@@ -107,7 +107,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		var regExpr = req.FormValue("regexpr")
 		var response = req.FormValue("response")
 		if len(regExpr) > 0 && len(response) > 0 {
-			message = fmt.Sprintf("[regExpr]:%s [response] successfuly added:%s \n\n", regExpr, response)
+			message = fmt.Sprintf("ADD SUCCESS => [regExpr]:%s [response]:%s \n\n", regExpr, response)
 		}
 	case "PUT":
 		// Update an existing record.
