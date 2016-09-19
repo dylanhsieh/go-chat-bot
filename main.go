@@ -92,9 +92,20 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 			results = result
 		}
 	}
-	for _, each := range results {
-		var message = fmt.Sprintf("[regExpr]:%s\n [response]:%s \n\n", each.RegExpr, each.Response)
-		io.WriteString(w, message)
+	switch req.Method {
+	case "GET":
+		for _, each := range results {
+			var message = fmt.Sprintf("[regExpr]:%s\n[response]:%s \n\n", each.RegExpr, each.Response)
+			io.WriteString(w, message)
+		}
+	case "POST":
+		// Create a new record.
+	case "PUT":
+		// Update an existing record.
+	case "DELETE":
+		// Remove the record.
+	default:
+		// Give an error message.
 	}
 }
 
