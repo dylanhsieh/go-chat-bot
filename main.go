@@ -113,7 +113,7 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 				Response: response,
 			}
 			if err := coll.Insert(messageUpdate); err != nil {
-				io.WriteString(w, err)
+				panic(err)
 			}
 		}
 	case "PUT":
