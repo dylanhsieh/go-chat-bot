@@ -16,7 +16,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
+	//"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -50,8 +50,9 @@ func main() {
 		fmt.Printf("哈哈哈 Connected to %v!\n", session.LiveServers())
 		defer session.Close()
 		coll := session.DB(Database).C(Collection)
-		result := Person{}
-		err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
+		result := []Person
+		//err := coll.Find(bson.M{"response": "超可愛"}).One(&result)
+		err := coll.Find(nil).All(&result)
 
 		if err == nil {
 			log.Println("mongo message", result)
