@@ -26,20 +26,13 @@ import (
 
 var mess = &Messenger{}
 
-type MessageResponse struct {
-	ID       bson.ObjectId `bson:"_id,omitempty"`
-	regExpr  string
-	response string
-}
-
 func main() {
 
 	const (
-		Host       = "ds011725.mlab.com:11725"
-		Username   = "dylan_hsieh"
-		Password   = "2juxuuux"
-		Database   = "message"
-		Collection = "messageResponse"
+		Host     = "ds011725.mlab.com:11725"
+		Username = "dylan_hsieh"
+		Password = "2juxuuux"
+		Database = "message"
 	)
 	session, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:    []string{Host},
