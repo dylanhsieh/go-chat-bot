@@ -106,7 +106,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		// Create a new record.
 		var regExpr = req.FormValue("regexpr")
 		var response = req.FormValue("response")
-		if regExpr {
+		if len(regExpr) > 0 {
 			io.WriteString(w, regExpr)
 			io.WriteString(w, response)
 		}
