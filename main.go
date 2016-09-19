@@ -126,7 +126,9 @@ func messageApiHandler(w http.ResponseWriter, req *http.Request) {
 		// Give an error message.
 		message = "error"
 	}
-	io.WriteString(w, message)
+	if len(message) > 0 {
+		io.WriteString(w, message)
+	}
 }
 
 //MessageReceived :Callback to handle when message received.
