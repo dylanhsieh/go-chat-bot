@@ -171,7 +171,7 @@ func MessageReceived(event Event, opts MessageOpts, msg ReceivedMessage) {
 	}
 
 	if matchCount <= 0 {
-		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "公山曉")
+		resp, err = mess.SendSimpleMessage(opts.Sender.ID, "公山曉朋友")
 	}
 
 	fmt.Printf("%+v", resp)
